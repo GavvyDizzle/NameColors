@@ -1,0 +1,26 @@
+database:
+  host: host
+  port: 3306
+  user: user
+  password: pass
+  database: db
+
+settings:
+  default: '6'
+
+messages:
+  on-enable: '&aEnabled: &e%namecolor%'
+  no-access: '&c&l(!) You do not have permission to equip this.'
+
+namecolors:
+  test:
+    item: GRASS
+    item-locked: INK_SACK:8
+    display-name: '&cT&ae&ds&at'
+    pattern: 'c a'
+    lore:
+      - '&6I volunteer as tribute\'
+    #color: '&2%1%' for one single color
+
+
+

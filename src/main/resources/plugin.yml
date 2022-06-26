@@ -1,0 +1,8 @@
+name: NameColors
+main: me.maximus1027.NameColors.Main
+version: 1.0
+
+commands:
+  namecolors:
+    description: Name colors.
+    aliases: [namecolor, name]
