@@ -23,14 +23,7 @@ public class Misc {
 
         String materialName = config.getString(path+".item-locked");
 
-        ItemStack NameColor;
-
-        if (materialName.contains(":")) {
-            NameColor = new ItemStack(Material.valueOf(materialName.toUpperCase().split(":")[0]), 1, Short.parseShort(materialName.split(":")[1]));
-        }
-        else {
-            NameColor = new ItemStack(Material.valueOf(materialName.toUpperCase()));
-        }
+        ItemStack NameColor = new ItemStack(Material.valueOf(materialName.toUpperCase()));
 
         ItemMeta NameColorMeta = NameColor.getItemMeta();
         NameColorMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

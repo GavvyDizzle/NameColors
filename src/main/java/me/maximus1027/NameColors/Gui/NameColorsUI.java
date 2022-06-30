@@ -98,14 +98,13 @@ public class NameColorsUI implements Listener {
             NBTItem item = new NBTItem(stack);
 
             stack = stack.clone();
-            if (player.hasPermission("namecolors.color."+item.getString("namecolor"))) {
+            if (player.hasPermission("namecolors.color." + item.getString("namecolor"))) {
                 ItemStack unlocked;// = new ItemStack(Material.valueOf(item.getString("unlock")));
 
                 String material = item.getString("unlock");
                 if (material.contains(":")) {
                     unlocked = new ItemStack(Material.valueOf(material.toUpperCase().split(":")[0]), 1, Short.parseShort(material.split(":")[1]));
-                }
-                else {
+                } else {
                     unlocked = new ItemStack(Material.valueOf(material.toUpperCase()));
                 }
 
@@ -142,13 +141,18 @@ public class NameColorsUI implements Listener {
         if (e.getClickedInventory() != null) {
             if (nameColorsUIS.containsKey(e.getWhoClicked().getUniqueId()) && e.getWhoClicked().getOpenInventory().getTopInventory().getItem(e.getSlot()).getType() != Material.AIR) {
                 e.setCancelled(true);
+                assert e.getWhoClicked().getOpenInventory().getTopInventory().getItem(e.getSlot()).getType() != Material.GRAY_STAINED_GLASS_PANE;
+
+                if (e.getClickedInventory() == e.getWhoClicked().getOpenInventory().getBottomInventory()) {
+                    return;
+                }
+
                 if (e.getSlot() == 30) {
                     NameColorsUI nameColorsUI = nameColorsUIS.get(e.getWhoClicked().getUniqueId());
                     nameColorsUI.previousPage();
                     nameColorsUI.updatePage();
                     return;
-                }
-                else if (e.getSlot() == 32) {
+                } else if (e.getSlot() == 32) {
                     NameColorsUI nameColorsUI = nameColorsUIS.get(e.getWhoClicked().getUniqueId());
                     nameColorsUI.nextPage();
                     nameColorsUI.updatePage();
@@ -159,13 +163,12 @@ public class NameColorsUI implements Listener {
 
                 NBTItem nbtItem = new NBTItem(itemStack);
                 FileConfiguration config = Main.getInstance().getConfig();
-                if (nbtItem.hasKey("namecolor") && e.getWhoClicked().hasPermission("namecolors.color."+nbtItem.getString("namecolor"))) {
+                if (nbtItem.hasKey("namecolor") && e.getWhoClicked().hasPermission("namecolors.color." + nbtItem.getString("namecolor"))) {
                     e.getWhoClicked().sendMessage(Misc.conv(config.getString("messages.on-enable").replace("%namecolor%", nbtItem.getString("namecolor"))));
-                    PlayerColors.setPlayerPattern(e.getWhoClicked().getUniqueId(), config.getString("namecolors."+nbtItem.getString("namecolor")+".pattern"));
-                    PlayerColors.setPlayerUserame(e.getWhoClicked().getUniqueId(), config.getString("namecolors."+nbtItem.getString("namecolor")+".pattern"));
-                }
-                else {
-                    player.sendMessage(Misc.conv(config.getString("messages.no-access").replace("%namecolor%", nbtItem.getString("namecolor"))));
+                    PlayerColors.setPlayerPattern(e.getWhoClicked().getUniqueId(), config.getString("namecolors." + nbtItem.getString("namecolor") + ".pattern"));
+                    PlayerColors.setPlayerUserame(e.getWhoClicked().getUniqueId(), config.getString("namecolors." + nbtItem.getString("namecolor") + ".pattern"));
+                } else {
+                    e.getWhoClicked().sendMessage(Misc.conv(config.getString("messages.no-access").replace("%namecolor%", nbtItem.getString("namecolor"))));
                 }
 
             }
