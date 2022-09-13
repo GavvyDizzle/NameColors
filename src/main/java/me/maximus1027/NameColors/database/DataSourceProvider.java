@@ -1,4 +1,4 @@
-package me.maximus1027.NameColors.Database;
+package me.maximus1027.NameColors.database;
 
 import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
 import com.mysql.cj.jdbc.MysqlDataSource;

@@ -1,4 +1,4 @@
-package me.maximus1027.NameColors.Database;
+package me.maximus1027.NameColors.database;
 
 import org.bukkit.plugin.Plugin;
 

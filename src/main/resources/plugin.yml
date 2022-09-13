@@ -4,6 +4,9 @@ api-version: 1.18
 version: 1.0
 
 commands:
-  namecolors:
-    description: Name colors.
-    aliases: [namecolor, name]
+  namecoloradmin:
+    aliases: [ncadmin]
+    description: NameColors admin commands
+  namecolor:
+    description: NameColors player commands
+    aliases: [namecolors, name]

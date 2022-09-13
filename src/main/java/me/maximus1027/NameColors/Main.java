@@ -1,25 +1,28 @@
 package me.maximus1027.NameColors;
 
-import me.maximus1027.NameColors.Database.Configuration;
-import me.maximus1027.NameColors.Database.DataSourceProvider;
-import me.maximus1027.NameColors.Database.DbSetup;
-import me.maximus1027.NameColors.Database.PlayerData;
-import me.maximus1027.NameColors.Gui.NameColorsUI;
-import me.maximus1027.NameColors.Gui.OpenGuiCommand;
-import me.maximus1027.NameColors.Players.PlayerColors;
-import me.maximus1027.NameColors.chatmanager.ChatLoading;
+import me.maximus1027.NameColors.colors.ColorManager;
+import me.maximus1027.NameColors.commands.AdminCommandManager;
+import me.maximus1027.NameColors.commands.PlayerCommandManager;
+import me.maximus1027.NameColors.database.Configuration;
+import me.maximus1027.NameColors.database.DataSourceProvider;
+import me.maximus1027.NameColors.database.DbSetup;
+import me.maximus1027.NameColors.gui.GUIManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
-    private static Main main;
+    private static Main instance;
+
+    private ColorManager colorManager;
+    private GUIManager guiManager;
+    private AdminCommandManager adminCommandManager;
 
     private DataSource dataSource;
-    private PlayerData data;
     private boolean mySQLSuccessful;
 
     @Override
@@ -47,35 +50,42 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
         if (!mySQLSuccessful) {
             getLogger().log(Level.SEVERE, "Database connection failed. Disabling plugin");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
+        instance = this;
+
+        colorManager = new ColorManager(dataSource, this);
+        getServer().getPluginManager().registerEvents(colorManager, this);
+
+        guiManager = new GUIManager();
+        getServer().getPluginManager().registerEvents(guiManager, this);
+
+        adminCommandManager = new AdminCommandManager();
+        Objects.requireNonNull(getCommand("namecoloradmin")).setExecutor(adminCommandManager);
+
+        Objects.requireNonNull(getCommand("namecolor")).setExecutor(new PlayerCommandManager());
 
 
-        getServer().getPluginManager().registerEvents(new NameColorsUI(null), this);
-        getServer().getPluginManager().registerEvents(new ChatLoading(), this);
-        getServer().getPluginManager().registerEvents(new PlayerColors(dataSource, this), this);
-        getCommand("namecolors").setExecutor(new OpenGuiCommand());
-
-
-
-        main = this;
-
-        NameColorsUI.Load();
-        ChatLoading.load();
         new Configuration(this);
     }
 
-    @Override
-    public void onDisable() {
-
+    public static Main getInstance() {
+        return instance;
     }
 
-    public static Main getInstance() {
-        return main;
+    public ColorManager getColorManager() {
+        return colorManager;
+    }
+
+    public GUIManager getGuiManager() {
+        return guiManager;
+    }
+
+    public AdminCommandManager getAdminCommandManager() {
+        return adminCommandManager;
     }
 }
