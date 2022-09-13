@@ -7,6 +7,8 @@ commands:
   namecoloradmin:
     aliases: [ncadmin]
     description: NameColors admin commands
+    permission: namecolors.admin
+    permission-message: Insufficient permission
   namecolor:
     description: NameColors player commands
     aliases: [namecolors, name]
