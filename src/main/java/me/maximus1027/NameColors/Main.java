@@ -7,6 +7,7 @@ import me.maximus1027.NameColors.database.Configuration;
 import me.maximus1027.NameColors.database.DataSourceProvider;
 import me.maximus1027.NameColors.database.DbSetup;
 import me.maximus1027.NameColors.gui.GUIManager;
+import me.maximus1027.NameColors.papi.MyExpansion;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.sql.DataSource;
@@ -69,8 +70,15 @@ public class Main extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("namecolor")).setExecutor(new PlayerCommandManager());
 
-
         new Configuration(this);
+
+        try {
+            new MyExpansion().register();
+        }
+        catch (Exception e) {
+            getLogger().severe("[NameColors] This plugin requires PlaceholderAPI!");
+            getServer().getPluginManager().disablePlugin(this);
+        }
     }
 
     public static Main getInstance() {

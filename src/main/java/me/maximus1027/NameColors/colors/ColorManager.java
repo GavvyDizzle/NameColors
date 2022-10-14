@@ -124,7 +124,7 @@ public class ColorManager implements Listener {
         e.setFormat(e.getFormat().replace("%1$s", getPlayerNameFormatted(e.getPlayer())));
     }
 
-    private String getPlayerNameFormatted(Player player) {
+    public String getPlayerNameFormatted(Player player) {
         if (coloredPlayerNames.containsKey(player.getUniqueId())) {
             return coloredPlayerNames.get(player.getUniqueId());
         }

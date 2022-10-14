@@ -23,6 +23,10 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -33,15 +37,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.github.PlaceholderAPI</groupId>
+            <artifactId>PlaceholderAPI</artifactId>
+            <version>2.11.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.mittenmc</groupId>
             <artifactId>ServerUtils</artifactId>
             <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>de.tr7zw</groupId>
-            <artifactId>item-nbt-api-plugin</artifactId>
-            <version>2.9.2-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
