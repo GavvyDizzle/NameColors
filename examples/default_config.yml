@@ -1,0 +1,168 @@
+database:
+  host: TODO
+  port: 3306 # likely 3306
+  user: TODO
+  password: TODO
+  database: TODO
+
+settings:
+  default: gray
+
+messages:
+  on-enable: '&aEnabled: &e%namecolor%' # %namecolor% is a special placeholder used here only
+  no-access: '&c&l(!) You do not have permission to equip this.'
+
+namecolors:
+  black:
+    lore: []
+    item: BLACK_WOOL
+    item-locked: GRAY_DYE
+    display-name: Black
+    pattern: '0'
+
+  darkblue:
+    lore: []
+    item: BLUE_WOOL
+    item-locked: GRAY_DYE
+    display-name: Dark Blue
+    pattern: '1'
+
+  darkgreen:
+    lore: []
+    item: GREEN_WOOL
+    item-locked: GRAY_DYE
+    display-name: Dark Green
+    pattern: '2'
+
+  darkaqua:
+    lore: []
+    item: CYAN_WOOL
+    item-locked: GRAY_DYE
+    display-name: Dark Aqua
+    pattern: '3'
+
+  darkred:
+    lore: []
+    item: RED_TERRACOTTA
+    item-locked: GRAY_DYE
+    display-name: Dark Red
+    pattern: '4'
+
+  purple:
+    lore: []
+    item: PURPLE_WOOL
+    item-locked: GRAY_DYE
+    display-name: Purple
+    pattern: '5'
+
+  gold:
+    lore: []
+    item: ORANGE_WOOL
+    item-locked: GRAY_DYE
+    display-name: Gold
+    pattern: '6'
+
+  gray:
+    lore: []
+    item: LIGHT_GRAY_WOOL
+    item-locked: GRAY_DYE
+    display-name: Light Gray
+    pattern: '7'
+
+  darkgray:
+    lore: []
+    item: GRAY_WOOL
+    item-locked: GRAY_DYE
+    display-name: Dark Gray
+    pattern: '8'
+
+  blue:
+    lore: []
+    item: LIGHT_BLUE_TERRACOTTA
+    item-locked: GRAY_DYE
+    display-name: Blue
+    pattern: '9'
+
+  lightgreen:
+    lore: []
+    item: LIME_WOOL
+    item-locked: GRAY_DYE
+    display-name: Green
+    pattern: a
+
+  aqua:
+    lore: []
+    item: LIGHT_BLUE_WOOL
+    item-locked: GRAY_DYE
+    display-name: Light Aqua
+    pattern: b
+
+  red:
+    lore: []
+    item: RED_WOOL
+    item-locked: GRAY_DYE
+    display-name: Red
+    pattern: c
+
+  pink:
+    lore: []
+    item: PINK_WOOL
+    item-locked: GRAY_DYE
+    display-name: Pink
+    pattern: d
+
+  yellow:
+    lore: []
+    item: YELLOW_WOOL
+    item-locked: GRAY_DYE
+    display-name: Yellow
+    pattern: e
+
+  white:
+    lore: []
+    item: WHITE_WOOL
+    item-locked: GRAY_DYE
+    display-name: White
+    pattern: f
+
+  rainbow:
+    lore: []
+    item: SUNFLOWER
+    item-locked: GRAY_DYE
+    display-name: Rainbow
+    pattern: c 6 e a b d
+
+  dark-rainbow:
+    lore: []
+    item: DIAMOND
+    item-locked: GRAY_DYE
+    display-name: Dark Rainbow
+    pattern: 4 2 1 6 5 3
+
+  patriot:
+    lore: []
+    item: EMERALD
+    item-locked: GRAY_DYE
+    display-name: Patriot
+    pattern: 4 1 f
+
+  pig:
+    lore: []
+    item: PIG_SPAWN_EGG
+    item-locked: GRAY_DYE
+    display-name: Pig
+    pattern: <GRADIENT:ff00c3> </GRADIENT:950072>
+
+  dolphin:
+    lore: []
+    item: DOLPHIN_SPAWN_EGG
+    item-locked: GRAY_DYE
+    display-name: Dolphin
+    pattern: <GRADIENT:00A2A2>&l&o&n </GRADIENT:00FFFF>
+
+  halloween:
+    lore: []
+    item: PUMPKIN
+    item-locked: GRAY_DYE
+    display-name: Halloween
+    pattern: <SOLID:D86E0D> <SOLID:827A73> <SOLID:B90FFF> <SOLID:AFBF48>

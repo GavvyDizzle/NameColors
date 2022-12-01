@@ -1,5 +1,5 @@
 name: NameColors
-main: me.maximus1027.NameColors.Main
+main: me.github.gavvydizzle.NameColors.Main
 api-version: 1.18
 version: 1.0
 depend: [PlaceholderAPI, ServerUtils]
