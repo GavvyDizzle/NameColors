@@ -1,19 +1,19 @@
 # NameColors
 
-**Commands:**
+### Commands:
  - /namecolor (/name, /namecolors) - Opens name selection GUI
  - /namecoloradmin (/ncadmin) - Admin commands (permission required)
 
-**Permissions**
+### Permissions
  - Admin permission: namecolors.admin - Gives access to all admin permissions
  - Each color's permission is defined as ```namecolor.color.name```
    - The name of a pattern is what you define it as in the config file
 
-**Placeholders**
+### Placeholders
 - This plugin will automatically overwrite the player's name in chat unless the default formatting is changed by a chat manager
 - ```%namecolors.name%``` gives the player's username formatted using their selected pattern (if online)
 
-**Creating Name Styles:**
+### Creating Name Styles:
  - Each style requires a unique name. This name is used in its permission node
  - item - The Material to display as (when unlocked). Use 1.18 materials
    - https://minecraft-ids.grahamedgecombe.com/
@@ -23,13 +23,13 @@
  - pattern - The pattern to apply to the player's name (does not work with nicknames)
    - All supported color styles can be found here: https://www.spigotmc.org/resources/serverutils.106515/
 
-**Default pattern**
+### Default Pattern:
  - By default, a player's pattern is gray "&7" when they join the server (or have permission to use none)
  - You can change the default pattern by changing 'settings.default' to the desired name
  - If the config file ever becomes corrupted, the color will default to gray
 
-**Patterns in-depth:**
- - See examples/default_config.yml for a default config file with simple patterns
+### Patterns in-depth:
+ - See [this](https://github.com/GavvyDizzle/NameColors/blob/master/examples/default_config.yml) for a default config file with simple patterns
  - Each pattern requires at least one color
  - "Solid" color patterns use & color codes and hex colors
    - & color codes (omit the &) [0-9a-f]
@@ -49,6 +49,6 @@
    - Helper codes also work here but are parsed differently
      - ```<&#8204;GRADIENT:44af1e>&l&o&n </GRADIENT:70cb68>``` would bold + italicise + underling this pattern ![img_7.png](images/img_7.png)
 
-**Saving Data:**
+### Saving Data:
  - This plugin uses MySQL to store its data (MariaDB also works)
  - The plugin will fail to load unless you have a proper MySQL database defined in the database section of the config
