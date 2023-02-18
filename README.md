@@ -1,6 +1,6 @@
 # NameColors
 
-This plugin allows you to create custom name styles (patterns) for players on your server! These patterns can be simple or very complex. Each pattern requires a permission to selected so you can give these as cosmetics to players on your server. You can make as many custom styles as you want.
+This plugin allows you to create custom name styles (patterns) for players on your server! These patterns can be simple or very complex. Each pattern requires a permission to be selected so you can give these as cosmetics to players on your server. You can make as many custom styles as you want.
 
 ### Requirements
  - There are two required dependencies: [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) and [ServerUtils](https://www.spigotmc.org/resources/serverutils.106515/)
@@ -52,7 +52,7 @@ This plugin allows you to create custom name styles (patterns) for players on yo
    - ```<GRADIENT:xxxxxx> </GRADIENT:yyyyyy>``` the name will go from xxxxxx to yyyyyy hex code
    - Each pattern only accepts one gradient
    - Helper codes also work here but are parsed differently
-     - ```<GRADIENT:44af1e>&l&o&n </GRADIENT:70cb68>``` would bold + italicise + underling this pattern ![img_7.png](images/img_7.png)
+     - ```<GRADIENT:44af1e>&l&o&n </GRADIENT:70cb68>``` would bold + italicise + underline this pattern ![img_7.png](images/img_7.png)
 
 ### Saving Data
  - This plugin uses MySQL to store its data (MariaDB also works)
