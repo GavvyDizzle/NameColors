@@ -17,7 +17,7 @@ This plugin allows you to create custom name styles (patterns) for players on yo
 
 ### Placeholders
 - This plugin will automatically overwrite the player's name in chat unless the default formatting is changed by a chat manager
-- ```%namecolors.name%``` gives the player's username formatted using their selected pattern (if online)
+- ```%namecolors_name%``` gives the player's username formatted using their selected pattern (if online)
 
 ### Creating Name Styles
  - Each style requires a unique name. This name is used in its permission node
