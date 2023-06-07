@@ -1,6 +1,6 @@
 # NameColors
 
-This plugin allows you to create custom name styles (patterns) for players on your server! These patterns can be simple or very complex. Each pattern requires a permission to selected so you can give these as cosmetics to players on your server. You can make as many custom styles as you want.
+This plugin allows you to create custom name styles (patterns) for players on your server! These patterns can be simple or very complex. Each pattern requires a permission to be selected, so you can give these as cosmetics to players on your server. You can make as many custom styles as you want.
 
 ### Requirements
  - There are two required dependencies: [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) and [ServerUtils](https://www.spigotmc.org/resources/serverutils.106515/)
@@ -19,7 +19,7 @@ This plugin allows you to create custom name styles (patterns) for players on yo
 
 ### Placeholders
 - This plugin will automatically overwrite the player's name in chat unless the default formatting is changed by a chat manager
-- ```%namecolors.name%``` gives the player's username formatted using their selected pattern (if online)
+- ```%namecolors_name%``` gives the player's username formatted using their selected pattern (if online)
 
 ### Creating Name Styles
  - Each style requires a unique name. This name is used in its permission node
@@ -40,7 +40,7 @@ This plugin allows you to create custom name styles (patterns) for players on yo
  - Each pattern requires at least one color
  - `SOLID` color patterns use & color codes and hex colors
    - & color codes (omit the &) [0-9a-f]
-   - Hex color codes `<&#8204;SOLID:xxxxxx>` where xxxxxx is a hex code [0-9a-f]
+   - Hex color codes `<SOLID:xxxxxx>` where xxxxxx is a hex code [0-9a-f]
    - To have a pattern cycle through colors, put multiple separated by a space
      - `c f` - red/white/red/white... ![img.png](images/img.png)
      - `a c e` - green/red/yellow/green... ![img_1.png](images/img_1.png)
@@ -48,13 +48,13 @@ This plugin allows you to create custom name styles (patterns) for players on yo
      - `c` for red ![img_2.png](images/img_2.png)
      - `c|l` for bold + red ![img_3.png](images/img_3.png)
      - `c|l|o|n` for bold + italics + underline + red ![img_4.png](images/img_4.png)
-     - `<&#8204;SOLID:abcdef>|l` to bold this hex color ![img_5.png](images/img_5.png)
-     - `f|l <&#8204;SOLID:e345df>|o|m` mixing the two also works ![img_6.png](images/img_6.png)
- - "Gradient" color patterns are also supported
-   - `<&#8204;GRADIENT:xxxxxx> </GRADIENT:yyyyyy>` the name will go from xxxxxx to yyyyyy hex code
+     - `<SOLID:abcdef>|l` to bold this hex color ![img_5.png](images/img_5.png)
+     - `f|l <SOLID:e345df>|o|m` mixing the two also works ![img_6.png](images/img_6.png)
+ - `GRADIENT` color patterns are also supported
+   - `<GRADIENT:xxxxxx> </GRADIENT:yyyyyy>` the name will go from xxxxxx to yyyyyy hex code
    - Each pattern only accepts one gradient
    - Helper codes also work here but are parsed differently
-     - `&#8204;GRADIENT:44af1e>&l&o&n </GRADIENT:70cb68>` would bold + italicise + underling this pattern ![img_7.png](images/img_7.png)
+     - `<GRADIENT:44af1e>&l&o&n </GRADIENT:70cb68>` would bold + italicise + underline this pattern ![img_7.png](images/img_7.png)
 
 ### Saving Data
  - This plugin uses MySQL to store its data (MariaDB also works)
