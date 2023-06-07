@@ -2,6 +2,7 @@ package me.github.gavvydizzle.NameColors.colors;
 
 import com.github.mittenmc.serverutils.Colors;
 import com.github.mittenmc.serverutils.ConfigUtils;
+import com.github.mittenmc.serverutils.ItemStackUtils;
 import me.github.gavvydizzle.NameColors.pattern.GradientPattern;
 import me.github.gavvydizzle.NameColors.pattern.Pattern;
 import me.github.gavvydizzle.NameColors.pattern.SolidPattern;
@@ -50,6 +51,7 @@ public class NameColor {
         meta.setDisplayName(displayName);
         meta.setLore(lore);
         unlockedItem.setItemMeta(meta);
+        ItemStackUtils.addAllItemFlags(unlockedItem);
 
         lockedItem = new ItemStack(lockedMaterial);
         meta = lockedItem.getItemMeta();
@@ -57,6 +59,7 @@ public class NameColor {
         meta.setDisplayName(displayName);
         meta.setLore(lore);
         lockedItem.setItemMeta(meta);
+        ItemStackUtils.addAllItemFlags(lockedItem);
     }
 
     public String getPermission() {
