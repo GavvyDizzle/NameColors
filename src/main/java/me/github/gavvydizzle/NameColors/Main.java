@@ -65,9 +65,7 @@ public class Main extends JavaPlugin {
         guiManager = new GUIManager();
         getServer().getPluginManager().registerEvents(guiManager, this);
 
-        adminCommandManager = new AdminCommandManager();
-        Objects.requireNonNull(getCommand("namecoloradmin")).setExecutor(adminCommandManager);
-
+        adminCommandManager = new AdminCommandManager(getCommand("namecoloradmin"));
         Objects.requireNonNull(getCommand("namecolor")).setExecutor(new PlayerCommandManager());
 
         new Configuration(this);

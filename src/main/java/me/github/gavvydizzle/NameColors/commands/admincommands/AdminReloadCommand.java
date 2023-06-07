@@ -2,33 +2,21 @@ package me.github.gavvydizzle.NameColors.commands.admincommands;
 
 import com.github.mittenmc.serverutils.SubCommand;
 import me.github.gavvydizzle.NameColors.Main;
+import me.github.gavvydizzle.NameColors.commands.AdminCommandManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminReloadCommand extends SubCommand {
 
-    @Override
-    public String getName() {
-        return "reload";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Reloads all data from the config";
-    }
-
-    @Override
-    public String getSyntax() {
-        return "/namecoloradmin reload";
-    }
-
-    @Override
-    public String getColoredSyntax() {
-        return ChatColor.YELLOW + "Usage: " + getSyntax();
+    public AdminReloadCommand(AdminCommandManager commandManager) {
+        setName("reload");
+        setDescription("Reloads this plugin");
+        setSyntax("/" + commandManager.getCommandDisplayName() + " reload");
+        setColoredSyntax(ChatColor.YELLOW + getSyntax());
+        setPermission(commandManager.getPermissionPrefix() + getName().toLowerCase());
     }
 
     @Override
@@ -47,7 +35,7 @@ public class AdminReloadCommand extends SubCommand {
     }
 
     @Override
-    public List<String> getSubcommandArguments(Player player, String[] args) {
+    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
         return new ArrayList<>();
     }
 

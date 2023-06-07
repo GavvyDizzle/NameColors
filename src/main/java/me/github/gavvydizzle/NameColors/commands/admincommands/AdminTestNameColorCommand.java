@@ -3,9 +3,9 @@ package me.github.gavvydizzle.NameColors.commands.admincommands;
 import com.github.mittenmc.serverutils.SubCommand;
 import me.github.gavvydizzle.NameColors.Main;
 import me.github.gavvydizzle.NameColors.colors.NameColor;
+import me.github.gavvydizzle.NameColors.commands.AdminCommandManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
@@ -13,24 +13,12 @@ import java.util.List;
 
 public class AdminTestNameColorCommand extends SubCommand {
 
-    @Override
-    public String getName() {
-        return "testNameColor";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Test what the name color formatting will do to text";
-    }
-
-    @Override
-    public String getSyntax() {
-        return "/namecoloradmin testNameColor <id> <message>";
-    }
-
-    @Override
-    public String getColoredSyntax() {
-        return ChatColor.YELLOW + "Usage: " + getSyntax();
+    public AdminTestNameColorCommand(AdminCommandManager commandManager) {
+        setName("testNameColor");
+        setDescription("Test what the name color formatting will do to text");
+        setSyntax("/" + commandManager.getCommandDisplayName() + " testNameColor <id> <message>");
+        setColoredSyntax(ChatColor.YELLOW + getSyntax());
+        setPermission(commandManager.getPermissionPrefix() + getName().toLowerCase());
     }
 
     @Override
@@ -55,7 +43,7 @@ public class AdminTestNameColorCommand extends SubCommand {
     }
 
     @Override
-    public List<String> getSubcommandArguments(Player player, String[] args) {
+    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
         ArrayList<String> list = new ArrayList<>();
 
         if (args.length == 2) {

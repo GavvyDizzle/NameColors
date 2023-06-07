@@ -13,3 +13,5 @@ commands:
   namecolor:
     description: NameColors player commands
     aliases: [namecolors, name]
+    permission: namecolors.player
+    permission-message: Insufficient permission
