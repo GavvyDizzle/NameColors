@@ -67,6 +67,8 @@ public class ColorManager implements Listener {
 
             selectionMessage = Colors.conv(config.getString("messages.on-enable"));
             permissionDeniedMessage = Colors.conv(config.getString("messages.no-access"));
+
+            recolorNames();
         });
     }
 
@@ -106,7 +108,8 @@ public class ColorManager implements Listener {
                         config.getStringList(path + ".lore"),
                         config.getString(path + ".item-locked"),
                         config.getString(path + ".item"),
-                        Objects.requireNonNull(config.getString(path + ".pattern"))
+                        Objects.requireNonNull(config.getString(path + ".pattern")),
+                        config.getBoolean(path + ".hidden")
                 );
             } catch (Exception e) {
                 Main.getInstance().getLogger().severe("An error occurred when loading '" + key + "'. It is being ignored!");
@@ -116,6 +119,23 @@ public class ColorManager implements Listener {
 
             nameColorHashMap.put(key, nameColor);
             nameColorArrayList.add(nameColor);
+        }
+    }
+
+    /**
+     * Updates the color of a name if existed before AND after the reload.
+     * This will not update all names because it would potentially remove the selection if an error occurred when reloading.
+     */
+    private void recolorNames() {
+        for (Map.Entry<UUID, String> entry : coloredPlayerNames.entrySet()) {
+            if (playerNameColorIDs.containsKey(entry.getKey())) {
+                String id = playerNameColorIDs.get(entry.getKey());
+                Player player = Bukkit.getPlayer(entry.getKey());
+
+                if (player != null && nameColorHashMap.containsKey(id)) {
+                    coloredPlayerNames.put(entry.getKey(), nameColorHashMap.get(id).getPattern().withPattern(player.getName()));
+                }
+            }
         }
     }
 

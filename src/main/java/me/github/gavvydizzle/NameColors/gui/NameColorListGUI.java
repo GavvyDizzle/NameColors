@@ -1,7 +1,7 @@
 package me.github.gavvydizzle.NameColors.gui;
 
 import com.github.mittenmc.serverutils.ColoredItems;
-import me.github.gavvydizzle.NameColors.Main;
+import me.github.gavvydizzle.NameColors.colors.ColorManager;
 import me.github.gavvydizzle.NameColors.colors.NameColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -27,10 +27,14 @@ public class NameColorListGUI {
     private final ItemStack previousPageItem;
     private final ItemStack nextPageItem;
 
+    private final ColorManager colorManager;
     private final ItemStack pageRowFiller;
     private final Map<UUID, Integer> playersInGUI;
+    private ArrayList<NameColor> nameColors;
 
-    public NameColorListGUI() {
+    public NameColorListGUI(ColorManager colorManager) {
+        this.colorManager = colorManager;
+
         inventorySize = 54;
         pageDownSlot = 48;
         pageInfoSlot = 49;
@@ -55,7 +59,10 @@ public class NameColorListGUI {
     }
 
     public void reload() {
-        maxPage = Main.getInstance().getColorManager().getNameColorArrayList().size() / 45 + 1;
+        nameColors = colorManager.getNameColorArrayList();
+        nameColors.removeIf(NameColor::isHidden);
+
+        maxPage = nameColors.size() / 45 + 1;
     }
 
     /**
@@ -64,7 +71,6 @@ public class NameColorListGUI {
      */
     public void openInventory(Player player) {
         Inventory inventory = Bukkit.createInventory(player, inventorySize, "Name Colors");
-        ArrayList<NameColor> nameColors = Main.getInstance().getColorManager().getNameColorArrayList();
 
         for (int i = 0; i < 45; i++) {
             try {
@@ -114,9 +120,8 @@ public class NameColorListGUI {
         }
         else if (slot < 45) {
             int index = getItemIndexSlot(page, slot);
-            ArrayList<NameColor> nameColors = Main.getInstance().getColorManager().getNameColorArrayList();
             if (nameColors.size() > index) {
-                Main.getInstance().getColorManager().onPatternSwap(player, index);
+                colorManager.onPatternSwap(player, index);
             }
         }
     }
@@ -125,8 +130,6 @@ public class NameColorListGUI {
     private void updatePageItems(Player player) {
         Inventory inventory = player.getOpenInventory().getTopInventory();
         int page = playersInGUI.get(player.getUniqueId());
-
-        ArrayList<NameColor> nameColors = Main.getInstance().getColorManager().getNameColorArrayList();
 
         for (int i = getItemIndexSlot(page, 0); i < getItemIndexSlot(page, 45); i++) {
             try {

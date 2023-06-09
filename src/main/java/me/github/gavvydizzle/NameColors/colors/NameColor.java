@@ -19,12 +19,14 @@ public class NameColor {
     private final List<String> lore;
     private final Pattern pattern;
     private ItemStack unlockedItem, lockedItem;
+    private final boolean hidden;
 
-    public NameColor(String id, String displayName, List<String> lore, String lockedItem, String unlockedItem, String pattern) {
+    public NameColor(String id, String displayName, List<String> lore, String lockedItem, String unlockedItem, String pattern, boolean hidden) {
         this.id = id;
         this.lore = Colors.conv(lore);
         this.lockedMaterial = ConfigUtils.getMaterial(lockedItem, Material.GRAY_DYE);
         this.unlockedMaterial = ConfigUtils.getMaterial(unlockedItem, Material.LIME_DYE);
+        this.hidden = hidden;
 
         if (pattern.toLowerCase().contains("gradient")) {
             this.pattern = new GradientPattern(pattern);
@@ -80,5 +82,9 @@ public class NameColor {
 
     public Pattern getPattern() {
         return pattern;
+    }
+
+    public boolean isHidden() {
+        return hidden;
     }
 }

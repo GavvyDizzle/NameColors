@@ -1,5 +1,6 @@
 package me.github.gavvydizzle.NameColors.gui;
 
+import me.github.gavvydizzle.NameColors.colors.ColorManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,8 +16,8 @@ public class GUIManager implements Listener {
     private final NameColorListGUI nameColorListGUI;
     private final HashSet<UUID> playersInGUI;
 
-    public GUIManager() {
-        nameColorListGUI = new NameColorListGUI();
+    public GUIManager(ColorManager colorManager) {
+        nameColorListGUI = new NameColorListGUI(colorManager);
         playersInGUI = new HashSet<>();
     }
 

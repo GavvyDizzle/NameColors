@@ -62,7 +62,7 @@ public class Main extends JavaPlugin {
         colorManager = new ColorManager(dataSource, this);
         getServer().getPluginManager().registerEvents(colorManager, this);
 
-        guiManager = new GUIManager();
+        guiManager = new GUIManager(colorManager);
         getServer().getPluginManager().registerEvents(guiManager, this);
 
         adminCommandManager = new AdminCommandManager(getCommand("namecoloradmin"));
