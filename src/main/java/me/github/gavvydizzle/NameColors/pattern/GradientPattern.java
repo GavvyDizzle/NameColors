@@ -13,6 +13,6 @@ public class GradientPattern extends Pattern {
 
     @Override
     public String withPattern(String input) {
-        return Colors.conv(patternArr[0] + input + patternArr[1]);
+        return Colors.conv(patternArr[0] + input + patternArr[1] + "&r");
     }
 }
