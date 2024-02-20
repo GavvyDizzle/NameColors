@@ -3,7 +3,7 @@ package me.github.gavvydizzle.NameColors.colors;
 import com.github.mittenmc.serverutils.Colors;
 import com.github.mittenmc.serverutils.ConfigUtils;
 import com.github.mittenmc.serverutils.ItemStackUtils;
-import me.github.gavvydizzle.NameColors.pattern.GradientPattern;
+import me.github.gavvydizzle.NameColors.pattern.BoundedPattern;
 import me.github.gavvydizzle.NameColors.pattern.Pattern;
 import me.github.gavvydizzle.NameColors.pattern.SolidPattern;
 import org.bukkit.Material;
@@ -28,8 +28,8 @@ public class NameColor {
         this.unlockedMaterial = ConfigUtils.getMaterial(unlockedItem, Material.LIME_DYE);
         this.hidden = hidden;
 
-        if (pattern.toLowerCase().contains("gradient")) {
-            this.pattern = new GradientPattern(pattern);
+        if (pattern.toLowerCase().contains("gradient") || pattern.toLowerCase().contains("rainbow")) {
+            this.pattern = new BoundedPattern(pattern);
         }
         else {
             this.pattern = new SolidPattern(pattern);

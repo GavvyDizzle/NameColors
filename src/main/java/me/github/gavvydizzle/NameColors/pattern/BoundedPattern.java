@@ -2,9 +2,13 @@ package me.github.gavvydizzle.NameColors.pattern;
 
 import com.github.mittenmc.serverutils.Colors;
 
-public class GradientPattern extends Pattern {
+/**
+ * Represents a pattern that requires a beginning and ending tag to function properly.
+ * Currently, this is used for the GRADIENT and RAINBOW patterns
+ */
+public class BoundedPattern extends Pattern {
 
-    public GradientPattern(String pattern) {
+    public BoundedPattern(String pattern) {
         String[] arr = pattern.split(" ");
         patternArr = new String[2];
         patternArr[0] = arr[0];
